@@ -17,7 +17,7 @@ class Solution:
 
         for i in range(len(s)):
             if s[i] not in inner: continue
-            for j in range(i, len(s)):
+            #for j in range(i, len(s)):
 
 
         return True
@@ -62,11 +62,45 @@ class Solution:
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
+    def moveZeroes(self, nums: [int]) -> None:
+        for i in nums:
+            if i == 0:
+                nums.remove(i)
+                nums.append(i)
+
+        print(nums)
+        '''count = 0
+        for i in range(len(nums)):
+            if i == len(nums)-count:
+                break
+            if nums[i] == 0:
+                count += 1
+                for j in range(i+1, len(nums)):
+                    current = nums[j]
+                    print(current)
+                    nums[j-1] = current
+
+                nums[len(nums)-1] = 0
+                print(nums)
+
+        print()
+        print(nums)'''
+
+    def removeDuplicateLetters(self, s: str) -> str:
+        alreadyThere = {}
+        output = ""
+
+        for i in s:
+            if not alreadyThere.get(i):
+                alreadyThere[i] = True
+                output += i
+
+        return output
+
+    def intersection(self, nums1: [int], nums2: [int]) -> [int]:
+
+
 
 test = Solution()
 
-testing = "TESTING"
-
-
-
-#print(test.longestCommonPrefix(["flower", "flow", "flight"]))
+print(test.removeDuplicateLetters("bcabc"))
