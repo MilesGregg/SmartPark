@@ -1,5 +1,8 @@
 import cv2
-import mysql.connector
+
+from python.SpotGenerator import SpotGenerator
+
+'''import mysql.connector
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -13,7 +16,12 @@ mycursor = mydb.cursor()
 mycursor.execute("SHOW TABLES")
 
 for x in mycursor:
-    print(x)
+    print(x)'''
+
+image_file = "data/parking_image.png"
+generator = SpotGenerator((255, 255, 255), image_file)
+generator.generate_spots()
+
 
 '''cap = cv2.VideoCapture("data/data.mp4")
 
