@@ -1,6 +1,21 @@
 import cv2
+import mysql.connector
 
-cap = cv2.VideoCapture("data/data.mp4")
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    database="TestDB"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SHOW TABLES")
+
+for x in mycursor:
+    print(x)
+
+'''cap = cv2.VideoCapture("data/data.mp4")
 
 
 while cap.isOpened():
@@ -12,4 +27,4 @@ while cap.isOpened():
         break
 
 cap.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows()'''
