@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+
+    client:
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        tty: true
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./client:/app
+            - /app/node_modules
+        networks:
+            - frontend
+
+    mysqldb:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3307:3306'
+        expose:
+            - '3306'
+        volumes:
+            - /var/lib/mysql
+        
+networks:
+    frontend:
+        driver: bridge
+    backend:
+        driver: bridge
+volumes:
+    mysqldbdata:
+        driver: local
+    appdata:
+        driver: local
